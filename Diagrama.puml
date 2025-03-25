@@ -1,0 +1,132 @@
+@startuml
+class CentipedeArcade
+
+class AreaJuego{
+- Ubicacion: jugadorUbicacion
+}
+class Superior
+class Inferior
+
+class Puntaje{
+- Valor: jugadorPuntaje
++ Aumentar()
++ VidaMas()
+}
+class FactorB
+class EnemigoTipo
+class Distancia
+
+class EfectoSonido
+class CentipedeSound
+class SpiderSound
+class ScorpionSound
+class FleaSound
+class DeathSound
+
+class Dificultad
+class FactorA
+class Velocidad
+class EnemigoCantidad
+class HongoCantidad
+
+class Control {
++ Movimiento(Trackball)
++Presionar(BotonDisparo) : Disparo
+}
+
+class BotonDisparo
+class Trackball
+
+class Elemento
+class Enemigo
+class Centipede
+class CentipedeBody{
+- Ubicacion: enemigoUbicacion
++Eliminar(Disparo):Hongo, Puntaje
++():CentipedeHead
+}
+class CentipedeHead{
+- Ubicacion: enemigoUbicacion
++ Eliminar(Disparo) : Hongo, Puntaje
++ Direccionar(Hongo)
+}
+class Pulga{
+- Ubicacion: enemigoUbicacion
++ Eliminar (Disparo) : Hongo, Puntaje
++Generar(): Hongo
+}
+class Araña{
+- Ubicacion: enemigoUbicacion
++ Eliminar (Disparo) : Hongo, Puntaje
+}
+class Escorpion{
+- Ubicacion: enemigoUbicacion
++ Eliminar (Disparo) : Hongo, Puntaje
++Cambiar(Hongo) : Veneno
+}
+class Hongo{
+- Hongo : estado
+- Hongo : salud
++(Disparo) : EstadoDos
++(Disparo) : EstadoTres
++(Disparo) : EstadoCuatro, Puntaje
+
+}
+class EstadoUno
+class EstadoDos
+class EstadoTres
+class EstadoCuatro
+class Normal
+class Veneno
+
+class Jugador{
++Disparar(BotonDisparo)
++Mover(Trackball)
+}
+
+CentipedeArcade o-- "2" AreaJuego
+AreaJuego o-- "1" Superior
+AreaJuego o-- "1" Inferior
+
+CentipedeArcade o-- Puntaje
+Puntaje o-- "2" FactorB
+FactorB <-- EnemigoTipo
+FactorB <-- Distancia
+
+CentipedeArcade o-- "6" EfectoSonido
+EfectoSonido <-- CentipedeSound
+EfectoSonido <-- SpiderSound
+EfectoSonido <-- ScorpionSound
+EfectoSonido <-- FleaSound
+EfectoSonido <-- DeathSound
+
+CentipedeArcade *-- "2" Control
+Control <-- "1" BotonDisparo
+Control <-- "1" Trackball
+
+CentipedeArcade *-- Dificultad
+Dificultad <-- "3" FactorA
+FactorA <-- Velocidad
+FactorA <-- "*" EnemigoCantidad
+FactorA <-- "*" HongoCantidad
+
+CentipedeArcade o-- "8" Elemento
+Elemento *-- "4" Enemigo
+Enemigo <-- Centipede
+Centipede <-- CentipedeHead
+Centipede <-- CentipedeBody
+Enemigo <-- Pulga
+Enemigo <-- Araña
+Enemigo <-- Escorpion
+
+Elemento *-- "6" Hongo
+Hongo *-- EstadoUno
+Hongo *-- EstadoDos
+Hongo *-- EstadoTres
+Hongo *-- EstadoCuatro
+Hongo <-- Normal
+Hongo <-- Veneno
+
+Elemento *-- Jugador
+
+@enduml
