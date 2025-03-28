@@ -1,0 +1,18 @@
+@startuml diagrama
+class Humano
+class Serie{
+    - Foco : focos[10]
+    + EncenderTodo()
+    + Imprimir()
+}
+class Foco{
+    - EstadoFoco : estadoActual
+    + Encender()
+    + Apagar()
+    + LeerEstado() : EstadoFoco
+}
+class EstadoFoco
+class Booleano
+
+Serie "1" *-- "10" Foco
+EstadoFoco --|> Booleano

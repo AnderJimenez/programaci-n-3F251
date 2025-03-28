@@ -2,15 +2,15 @@
 class CentipedeArcade
 
 class AreaJuego{
-- Ubicacion: jugadorUbicacion
+    - Ubicacion: jugadorUbicacion
 }
 class Superior
 class Inferior
 
 class Puntaje{
-- Valor: jugadorPuntaje
-+ Aumentar()
-+ VidaMas()
+    - Valor: jugadorPuntaje
+    + Aumentar()
+    + VidaMas()
 }
 class FactorB
 class EnemigoTipo
@@ -30,8 +30,8 @@ class EnemigoCantidad
 class HongoCantidad
 
 class Control {
-+ Movimiento(Trackball)
-+Presionar(BotonDisparo) : Disparo
+    + Movimiento(Trackball)
+    +Presionar(BotonDisparo) : Disparo
 }
 
 class BotonDisparo
@@ -41,35 +41,35 @@ class Elemento
 class Enemigo
 class Centipede
 class CentipedeBody{
-- Ubicacion: enemigoUbicacion
-+Eliminar(Disparo):Hongo, Puntaje
-+():CentipedeHead
+    - Ubicacion: enemigoUbicacion
+    +Eliminar(Disparo):Hongo, Puntaje
+    +():CentipedeHead
 }
 class CentipedeHead{
-- Ubicacion: enemigoUbicacion
-+ Eliminar(Disparo) : Hongo, Puntaje
-+ Direccionar(Hongo)
+    - Ubicacion: enemigoUbicacion
+    + Eliminar(Disparo) : Hongo, Puntaje
+    + Direccionar(Hongo)
 }
 class Pulga{
-- Ubicacion: enemigoUbicacion
-+ Eliminar (Disparo) : Hongo, Puntaje
-+Generar(): Hongo
+    - Ubicacion: enemigoUbicacion
+    + Eliminar (Disparo) : Hongo, Puntaje
+    +Generar(): Hongo
 }
 class Araña{
-- Ubicacion: enemigoUbicacion
-+ Eliminar (Disparo) : Hongo, Puntaje
+    - Ubicacion: enemigoUbicacion
+    + Eliminar (Disparo) : Hongo, Puntaje
 }
 class Escorpion{
-- Ubicacion: enemigoUbicacion
-+ Eliminar (Disparo) : Hongo, Puntaje
-+Cambiar(Hongo) : Veneno
+    - Ubicacion: enemigoUbicacion
+    + Eliminar (Disparo) : Hongo, Puntaje
+    +Cambiar(Hongo) : Veneno
 }
 class Hongo{
-- Hongo : estado
-- Hongo : salud
-+(Disparo) : EstadoDos
-+(Disparo) : EstadoTres
-+(Disparo) : EstadoCuatro, Puntaje
+    - Hongo : estado
+    - Hongo : salud
+    +(Disparo) : EstadoDos
+    +(Disparo) : EstadoTres
+    +(Disparo) : EstadoCuatro, Puntaje
 
 }
 class EstadoUno
@@ -80,8 +80,8 @@ class Normal
 class Veneno
 
 class Jugador{
-+Disparar(BotonDisparo)
-+Mover(Trackball)
+    +Disparar(BotonDisparo)
+    +Mover(Trackball)
 }
 
 CentipedeArcade o-- "2" AreaJuego
