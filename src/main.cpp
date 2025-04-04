@@ -13,7 +13,7 @@ int main(int argc, char const *argv[])
 {
    Screen pantalla = Screen::Create(
       Dimension::Full(),
-      Dimension::Full(),
+      Dimension::Full()
    );
 
    auto document = hbox({
